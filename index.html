@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JalMitra: Smart Plant Irrigation for Everyone</title>
+<meta name="description" content="Free smart irrigation guide for India and the world: water calculator, watering planner, crop guide, schemes and tips. Hindi and English.">
+<meta name="theme-color" content="#0b77b8">
+<meta property="og:title" content="JalMitra: Smart Plant Irrigation for Everyone">
+<meta property="og:description" content="Calculate how much water your plants need and learn to automate irrigation.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A7%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Hind:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="splash" role="dialog" aria-label="Loading JalMitra">
+<svg viewBox="0 0 200 190" aria-hidden="true"><path d="M40 172H160" stroke="#8a6444" stroke-width="6" stroke-linecap="round"/><ellipse class="rp r1" cx="100" cy="170" rx="8" ry="3" fill="none" stroke="#8fd3ff" stroke-width="1.5"/><ellipse class="rp r2" cx="100" cy="170" rx="8" ry="3" fill="none" stroke="#8fd3ff" stroke-width="1.5"/><path class="stem" d="M100 170V122" stroke="#8fe07a" stroke-width="4" fill="none" stroke-linecap="round"/><path class="leaf lf1" d="M100 130C80 130 70 114 72 102C90 102 100 114 100 130Z" fill="#8fe07a"/><path class="leaf lf2" d="M100 130C120 130 130 114 128 102C110 102 100 114 100 130Z" fill="#8fe07a"/><path class="drop" d="M100 20C100 20 88 42 88 52a12 12 0 0 0 24 0C112 42 100 20 100 20Z" fill="#8fd3ff"/></svg>
+<div class="sptitle">JalMitra</div>
+<p>हर पौधे के लिए स्मार्ट सिंचाई / Smart watering for every plant</p>
+<div class="spbar"><i></i></div>
+<p id="sp-msg" aria-live="polite">Preparing calculator…</p>
+<button id="sp-skip">Skip / छोड़ें</button>
+</div>
+<header>
+<b>JalMitra</b>
+<a href="#ask" data-hi="पूछें">Ask</a><a href="#myplants" data-hi="मेरे पौधे">My plants</a><a href="#how" data-hi="कैसे इस्तेमाल करें">How to use</a><a href="#crops" data-hi="फसलें">Crops</a><a href="#learn" data-hi="सीखें">Learn</a><a href="#india" data-hi="भारत">India</a><a href="#schemes" data-hi="योजनाएं">Schemes</a><a href="#faq">FAQ</a>
+<button id="share" aria-label="Share this site">Share</button>
+<button id="lang" aria-label="Switch language">हिंदी</button>
+<button id="theme" aria-label="Toggle theme">Theme</button>
+</header>
+
+<main class="wrap">
+<div class="hero">
+<div>
+<h1 data-hi="सही समय पर, सही मात्रा में <span class='big'>पानी</span>।">Water your plants at the right time, in the <span class="big">right amount</span>.</h1>
+<p class="lead" data-hi="अपने पौधे या फसल के लिए पानी की सही मात्रा और समय जानें, और अपना वॉटरिंग प्लान सेव करें। गमले से लेकर खेत तक।">Find out how much water your plants or crops need and how often, then save your watering plan. From a balcony pot to a farm.</p>
+</div>
+
+<div class="calc" aria-labelledby="ch">
+<h2 id="ch" data-hi="पानी की ज़रूरत कैलकुलेटर">How much water do you need?</h2>
+<div class="f">
+<div><label for="crop" data-hi="पौधा / फसल">Plant or crop</label><select id="crop">
+<option value="3">Houseplants / pots</option><option value="5">Vegetable garden</option><option value="5.5">Tomato</option><option value="4.5">Wheat</option><option value="8">Rice (paddy)</option><option value="6">Cotton</option><option value="6.5">Sugarcane</option><option value="5">Lawn</option></select></div>
+<div><label for="season" data-hi="मौसम">Season</label><select id="season"><option value="1.3">Summer</option><option value="0.4">Monsoon</option><option value="0.85" selected>Winter / mild</option></select></div>
+<div><label for="soil" data-hi="मिट्टी">Soil</label><select id="soil"><option value="1.15">Sandy</option><option value="1" selected>Loam</option><option value="0.9">Clay</option></select></div>
+<div><label for="area" data-hi="क्षेत्रफल">Area</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><input id="area" type="number" min="0.1" step="any" value="50" aria-label="Area"><select id="unit" aria-label="Unit"><option value="1">m²</option><option value="0.0929">sq ft</option><option value="4046.86">acre</option></select></div></div>
+</div>
+<div class="res" id="res" aria-live="polite"></div>
+<p class="note">Estimates from typical crop water needs. Real needs vary by variety, growth stage and local weather.</p>
+</div>
+</div>
+
+<div class="strip">
+<div><b>~70%</b><span>of the world’s freshwater withdrawals go to agriculture</span></div>
+<div><b>2×</b><span>or more efficient: drip delivers water at the root, flooding wastes much of it</span></div>
+<div><b>8</b><span data-hi="फसलों और पौधों के लिए तैयार वॉटरिंग प्लान">crops and plants with ready watering plans</span></div>
+</div>
+
+<section id="ask">
+<h2 data-hi="JalMitra से पूछें">Ask JalMitra</h2>
+<p data-hi="हिंदी या अंग्रेज़ी में सवाल लिखें या बोलकर पूछें।">Type or speak your question in Hindi or English.</p>
+<div id="clog" class="clog" aria-live="polite"></div>
+<div id="aerr" class="note" style="color:var(--bad)" role="alert"></div>
+<div class="arow"><input id="aq" placeholder="Type your question / अपना सवाल लिखें" aria-label="Your question"><button id="asend" data-hi="भेजें">Send</button><button id="mic" aria-pressed="false" data-hi="बोलें">Speak</button><button id="vstop" data-hi="आवाज़ बंद">Stop voice</button></div>
+<label class="note"><input type="checkbox" id="spk"> <span data-hi="जवाब बोलकर सुनाएँ">Read answers aloud</span></label>
+<div class="row chips"><button class="chip" data-hi="गेहूँ को कितना पानी चाहिए?">How much water does wheat need?</button><button class="chip" data-hi="ड्रिप सिंचाई क्या है?">What is drip irrigation?</button><button class="chip" data-hi="पानी कब देना चाहिए?">When should I water?</button></div>
+<p class="note" data-hi="यह सिर्फ़ जानकारी है, पेशेवर सलाह नहीं। बड़े फ़ैसलों के लिए स्थानीय कृषि विशेषज्ञ से मिलें। माइक Chrome में सबसे अच्छा चलता है और आवाज़ आपके ब्राउज़र की स्पीच सेवा से प्रोसेस हो सकती है।">Information only, not professional advice. For big decisions, check with a local agriculture expert. The mic works best in Chrome, and your voice may be processed by your browser speech service.</p>
+</section>
+
+<section id="how">
+<h2 data-hi="कैसे इस्तेमाल करें">How to use</h2>
+<div class="flow">
+<div><h3 data-hi="चुनें">Pick</h3><p data-hi="कैलकुलेटर में पौधा, मौसम, मिट्टी और क्षेत्रफल चुनें।">Choose your plant, season, soil and area in the calculator.</p></div>
+<div><h3 data-hi="जानें">Know</h3><p data-hi="देखें कितना पानी और कितने दिन में चाहिए।">See how much water you need and how often.</p></div>
+<div><h3 data-hi="सेव करें">Save</h3><p data-hi="इस डिवाइस पर मेरे पौधों में सेव करें।">Save it to My Plants on this device.</p></div>
+<div><h3 data-hi="ट्रैक करें">Track</h3><p data-hi="आज पानी दिया दबाएँ और अगली तारीख देखें।">Tap Watered today and see the next date.</p></div>
+</div>
+</section>
+
+<section id="myplants">
+<h2 data-hi="मेरे पौधे">My plants</h2>
+<p data-hi="कैलकुलेटर में योजना बनाकर Save दबाएँ। अगला पानी कब देना है, यहाँ दिखेगा। डेटा सिर्फ़ इस डिवाइस के ब्राउज़र में सेव होता है।">Build a plan in the calculator and press Save. The next watering date shows here. Data is saved only in this browser on this device.</p>
+<div id="mp" class="grid"></div>
+</section>
+
+<section id="crops">
+<h2 data-hi="फसल गाइड">Crop guide</h2>
+<p>Search a crop or plant, see how to water it, then press Try to load it into the calculator above.</p>
+<input id="cs" type="search" placeholder="Search: rice, tomato, lawn..." aria-label="Search crops">
+<div class="tw"><table id="ct"></table></div>
+</section>
+
+<section id="learn">
+<h2 data-hi="सीखें">Learn the basics</h2>
+<div class="grid">
+<div class="card"><h3>Too much or too little?</h3><p>Yellow, soft leaves and soggy soil often mean too much water. Dry, crispy edges and wilting in dry soil mean too little. Check soil, not just the leaves.</p></div>
+<div class="card"><h3>Best time to water</h3><p>Early morning. Less water is lost to heat and wind, and leaves dry out during the day.</p></div>
+<div class="card"><h3>Use mulch</h3><p>Straw, dry leaves or crop residue on top of the soil slows evaporation and keeps moisture steady.</p></div>
+<div class="card"><h3>Harvest rainwater</h3><p>Store monsoon runoff in tanks or ponds and feed it to your drip system later in the dry months.</p></div>
+<div class="card"><h3 data-hi="पहले मिट्टी जाँचें">Check the soil first</h3><p data-hi="उंगली को 2 से 3 सेमी मिट्टी में डालें। सूखी लगे तो पानी दें, नम लगे तो रुकें।">Push a finger 2 to 3 cm into the soil. If it feels dry, water. If it feels damp, wait.</p></div>
+<div class="card"><h3>Water deeply, not often</h3><p>Deep, less frequent watering pushes roots down so plants handle dry spells better.</p></div>
+</div>
+</section>
+
+<section id="india">
+<h2 data-hi="भारत में क्यों ज़रूरी">Why it matters in India</h2>
+<div class="grid">
+<div class="card"><h3>Falling groundwater</h3><p>Many regions depend on borewells and groundwater is dropping in several states. Pumping only when needed saves water and electricity.</p></div>
+<div class="card"><h3>Uneven monsoon</h3><p>Rain is late or patchy in many years. A moisture-based system waters when soil is dry, not by the calendar.</p></div>
+<div class="card"><h3>Support for drip</h3><p>Central and state schemes such as Per Drop More Crop under PMKSY have supported micro-irrigation. Eligibility and subsidy change, so check with your state agriculture department.</p></div>
+<div class="card"><h3>Works anywhere</h3><p data-hi="किसी भी फ़ोन या कंप्यूटर पर बिना इंस्टॉल किए चलता है, इसलिए दुनिया भर के किसान, छात्र और बागवान इसे इस्तेमाल कर सकते हैं।">Works on any phone or computer with nothing to install, so farmers, students and gardeners everywhere can use it.</p></div>
+</div>
+</section>
+
+<section id="schemes">
+<h2 data-hi="सरकारी योजनाएं">Schemes and support in India</h2>
+<div class="grid">
+<div class="card"><h3>PMKSY: Per Drop More Crop</h3><p>Central scheme that supports drip and sprinkler micro-irrigation for farmers.</p></div>
+<div class="card"><h3>PM-KUSUM</h3><p>Supports solar pumps and solarisation of farm pumps, useful for off-grid smart irrigation.</p></div>
+<div class="card"><h3>State and horticulture missions</h3><p>Many states add their own micro-irrigation support, often through horticulture or agriculture departments.</p></div>
+</div>
+<p class="note">Scheme names, rules and subsidy rates change and differ by state. Confirm on official portals or at your district agriculture office before applying.</p>
+<h2 style="margin-top:34px" data-hi="दुनिया भर में">Around the world</h2>
+<div class="grid">
+<div class="card"><h3>Dry regions</h3><p data-hi="ड्रिप सिंचाई पानी की कमी वाले देशों में बढ़ी जहाँ हर लीटर कीमती है, और स्मार्ट प्लानिंग इसी विचार को आगे ले जाती है।">Drip irrigation grew in water-scarce countries where every litre counts, and smart planning takes the same idea further.</p></div>
+<div class="card"><h3>Smallholder farms</h3><p data-hi="मुफ़्त प्लानिंग टूल छोटे खेतों को पानी सोच-समझकर इस्तेमाल करने में मदद करते हैं।">Free planning tools help small farms use water more carefully.</p></div>
+<div class="card"><h3>Cities</h3><p>Rooftop gardens, parks and community plots use smart controllers to cut watering bills.</p></div>
+</div>
+</section>
+
+<section id="faq">
+<h2 data-hi="अक्सर पूछे जाने वाले सवाल">FAQ</h2>
+<details><summary data-hi="कैलकुलेटर कितना सही है?">How accurate is the calculator?</summary><p data-hi="यह सामान्य फसल जल-ज़रूरतों पर आधारित अनुमान है। असली ज़रूरत किस्म, मौसम और मिट्टी पर निर्भर करती है, इसलिए पहले मिट्टी उंगली से जाँचें।">It gives estimates from typical crop water needs. Real needs depend on variety, weather and soil, so check the soil with your finger first.</p></details>
+<details><summary data-hi="मेरा डेटा कहाँ सेव होता है?">Where is my data saved?</summary><p data-hi="मेरे पौधे सिर्फ़ इसी डिवाइस के ब्राउज़र में सेव होते हैं। ब्राउज़र का डेटा साफ़ करने पर वे हट जाएँगे।">My Plants are saved only in this browser on this device. Clearing browser data will remove them.</p></details>
+<details><summary data-hi="क्या खेत के लिए भी चलेगा?">Can I use it for a farm?</summary><p data-hi="हाँ, क्षेत्रफल एकड़ में चुनें। बड़े खेतों के फ़ैसले से पहले स्थानीय कृषि विशेषज्ञ से सलाह लें।">Yes, choose area in acres. For large farm decisions, check with a local agriculture expert.</p></details>
+<details><summary data-hi="क्या यह पेशेवर सलाह है?">Is this professional advice?</summary><p data-hi="नहीं, यह सिर्फ़ जानकारी और अनुमान है।">No, it is information and estimates only.</p></details>
+</section>
+</main>
+
+<footer><div class="wrap" data-hi="JalMitra स्मार्ट सिंचाई की एक शैक्षणिक गाइड है। आँकड़े अनुमान हैं, बड़े निवेश से पहले स्थानीय कृषि विशेषज्ञ से पुष्टि करें।">JalMitra is an educational guide to smart irrigation. Numbers are estimates, so confirm with local agricultural experts before large investments.</div></footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
